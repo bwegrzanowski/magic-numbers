@@ -32,4 +32,24 @@ public class ExtensionChecker {
         }
         return name.substring(lastIndexOf);
     }
+
+    //gets decimal value of first hexadecimal number
+    public int getDecimalOfHex(String string) {
+        return Integer.parseInt(string, 16);
+    }
+
+    //confirms extension with the ones defined in enum
+    public String pointExtension(String string) {
+        String result = "";
+        int decimalOfHex = getDecimalOfHex(string.substring(0,2));
+        if ((decimalOfHex > 64 && decimalOfHex < 91) || (decimalOfHex > 97 && decimalOfHex < 122)) {
+            result = "TXT";
+        }
+        for (HexExtensionEnum extension : HexExtensionEnum.values()) {
+            if (string.startsWith(extension.getDefyingHex())) {
+                result = extension.name();
+            }
+        }
+        return result;
+    }
 }

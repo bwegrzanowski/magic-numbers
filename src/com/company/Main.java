@@ -10,10 +10,9 @@ public class Main {
 
         //file path
         String path = "";
-
-        System.out.println("the file states that it is a " + extensionChecker.getAllegedFileExtension(new File(path)) + " but it is a " + "" + " actually");
-
+        String allegedFileExtension = extensionChecker.getAllegedFileExtension(new File(path));
         byte[] bytes = extensionChecker.fileToByteArray(path);
-        System.out.println(extensionChecker.toHexString(bytes));
+        String hexString = extensionChecker.toHexString(bytes);
+        System.out.println("Extension is " + allegedFileExtension + " while actually it's a " +extensionChecker.pointExtension(hexString));
     }
 }
